@@ -18,7 +18,7 @@ export const flexStyles = (
 };
 
 export const mediaQueries = {
-  mobile: "@media (max-width: 600px)",
-  tablet: "@media (min-width: 601px) and (max-width: 900px)",
-  desktop: "@media (min-width: 901px) and (max-width: 1200px)",
+  mobile: "@media (max-width: 768px)",
+  tablet: "@media (min-width: 769px) and (max-width: 1024px)",
+  desktop: "@media (min-width: 1025px) and (max-width: 1200px)",
 };

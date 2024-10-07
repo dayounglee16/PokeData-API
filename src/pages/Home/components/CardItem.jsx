@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { flexStyles } from "../../../styles/layoutStyles";
+import { flexStyles, mediaQueries } from "../../../styles/layoutStyles";
 
 const CardItem = () => {
   return (
@@ -54,5 +54,13 @@ const CardItemContainer = styled.div`
     padding: 5px 0;
     border-radius: 5px;
     font-size: 0.8rem;
+  }
+
+  ${mediaQueries.tablet} {
+    max-width: 45.5%;
+  }
+
+  ${mediaQueries.mobile} {
+    max-width: 100%;
   }
 `;

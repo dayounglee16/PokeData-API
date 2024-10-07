@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import logo from "../assets/images/logos/main_logo.png";
-import { flexStyles } from "../styles/layoutStyles";
+import { flexStyles, mediaQueries } from "../styles/layoutStyles";
 
 const Header = () => {
   return (
@@ -28,6 +28,17 @@ const HeaderContainer = styled.div`
     .main-logo {
       cursor: pointer;
       width: 140px;
+    }
+  }
+
+  ${mediaQueries.tablet} {
+    .header-inner {
+      ${flexStyles("row", "center", "center")}
+    }
+  }
+  ${mediaQueries.mobile} {
+    .header-inner {
+      ${flexStyles("row", "center", "center")}
     }
   }
 `;
