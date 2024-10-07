@@ -44,9 +44,10 @@ export const GlobalStyles = createGlobalStyle`
     content: '';
     content: none;
   }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  button{
+    cursor: pointer;
   }
+
+  
   
 `;

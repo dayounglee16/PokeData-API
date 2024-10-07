@@ -2,14 +2,18 @@ export const flexStyles = (
   direction = "row",
   justifyContent = "center",
   alignItems = "center",
-  gap = 0
+  flexWrap = "wrap",
+  gap = 0,
+  flex = "initial"
 ) => {
   return `
     display:flex;
     flex-direction: ${direction};
-    align-items : ${alignItems};
     justify-content: ${justifyContent};
-    gap:${gap};
+    align-items : ${alignItems};
+    flex-wrap: ${flexWrap};
+    gap: ${gap}px;
+    flex: ${flex};
   `;
 };
 
