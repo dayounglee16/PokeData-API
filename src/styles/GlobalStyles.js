@@ -25,6 +25,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    color: #333;
   }
   article, aside, details, figcaption, figure, 
   footer, header, hgroup, menu, nav, section {

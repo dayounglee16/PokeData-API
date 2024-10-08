@@ -27,9 +27,9 @@ const Form = styled.form`
   .search-input {
     width: 80%;
     padding: 17px 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
-    border: 1px solid #eee;
+    border: 2px solid #eee;
     outline: none;
   }
 

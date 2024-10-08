@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { flexStyles, mediaQueries } from "../../../styles/layoutStyles";
+import { useNavigate } from "react-router-dom";
 
 const CardItem = () => {
+  const navigate = useNavigate();
   return (
-    <CardItemContainer>
+    <CardItemContainer onClick={() => navigate("/detail")}>
       <div className="pokemon-id-box">
         <span>#아이디</span>
       </div>
@@ -25,9 +27,11 @@ const CardItemContainer = styled.div`
   max-width: 29%;
   aspect-ratio: 3/2;
   border-radius: 5px;
+  background-color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 50px;
   padding: 15px;
+  cursor: pointer;
 
   .pokemon-id-box {
     ${flexStyles("row", "flex-start", "center")}
@@ -57,7 +61,7 @@ const CardItemContainer = styled.div`
   }
 
   ${mediaQueries.tablet} {
-    max-width: 45.5%;
+    max-width: 45%;
   }
 
   ${mediaQueries.mobile} {

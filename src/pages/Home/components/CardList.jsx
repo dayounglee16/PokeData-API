@@ -44,5 +44,5 @@ const CardListContainer = styled.div`
   ${flexStyles("row", "space-between")}
   max-width: 100%;
   margin-top: 80px;
-  padding: 0 20px;
+  padding: 0 30px;
 `;
