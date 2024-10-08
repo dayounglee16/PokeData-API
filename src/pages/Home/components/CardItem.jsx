@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { flexStyles, mediaQueries } from "../../../styles/layoutStyles";
 import { useNavigate } from "react-router-dom";
 
-const CardItem = () => {
+const CardItem = ({ pokemonItem }) => {
   const navigate = useNavigate();
   return (
-    <CardItemContainer onClick={() => navigate("/detail")}>
+    <CardItemContainer onClick={() => navigate(`/detail/${pokemonItem.id}`)}>
       <div className="pokemon-id-box">
-        <span>#아이디</span>
+        <span>#{pokemonItem.id}</span>
       </div>
       <div className="pokemon-image">이미지</div>
       <h3 className="pokemon-name">이름</h3>

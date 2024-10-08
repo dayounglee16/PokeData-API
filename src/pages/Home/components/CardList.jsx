@@ -32,7 +32,7 @@ const CardList = () => {
   return (
     <CardListContainer>
       {mockData.map((pokemonItem) => {
-        return <CardItem key={pokemonItem.id} />;
+        return <CardItem key={pokemonItem.id} pokemonItem={pokemonItem} />;
       })}
     </CardListContainer>
   );

@@ -18,8 +18,7 @@ export default DetailPage;
 const DetailContainer = styled.div`
   ${flexStyles("row", "center", "flex-start")}
   width: 100%;
-  height: calc(100dvh - 130px);
-  padding: 30px;
+  height: calc(100dvh - 70px);
 
   .detail-inner {
     ${flexStyles("row", "space-between")}
@@ -27,7 +26,7 @@ const DetailContainer = styled.div`
     max-width: 1000px;
     aspect-ratio: 16/9;
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 90px;
     padding: 30px;
     border-radius: 20px;
     border: 2px solid #da343c54;
@@ -47,6 +46,8 @@ const DetailContainer = styled.div`
 
     .detail-inner {
       ${flexStyles("row", "center", "center", "wrap", 60)}
+      width: 80%;
+      margin-top: 60px;
 
       .pokemon-image {
         ${flexStyles()}
@@ -60,7 +61,8 @@ const DetailContainer = styled.div`
 
     .detail-inner {
       ${flexStyles("row", "center", "center", "wrap", 60)}
-      margin-top: 20px;
+      width: 80%;
+      margin-top: 60px;
 
       .pokemon-image {
         ${flexStyles()}
