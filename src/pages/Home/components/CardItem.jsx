@@ -4,13 +4,18 @@ import { useNavigate } from "react-router-dom";
 
 const CardItem = ({ pokemonItem }) => {
   const navigate = useNavigate();
+
   return (
     <CardItemContainer onClick={() => navigate(`/detail/${pokemonItem.id}`)}>
       <div className="pokemon-id-box">
-        <span>#{pokemonItem.id}</span>
+        <span className="pokemon-id"># {pokemonItem.id} </span>
       </div>
-      <div className="pokemon-image">이미지</div>
-      <h3 className="pokemon-name">이름</h3>
+      <img
+        className="pokemon-image"
+        src={pokemonItem.imgURL}
+        alt={pokemonItem.name}
+      />
+      <h3 className="pokemon-name">{pokemonItem.name}</h3>
       <ul className="pokemon-ability-box">
         <li className="pokemon-ability-item">능력</li>
         <li className="pokemon-ability-item">능력</li>
@@ -25,31 +30,53 @@ const CardItemContainer = styled.div`
   ${flexStyles("column", "space-between", "center", "wrap")}
   width: 100%;
   max-width: 29%;
-  aspect-ratio: 3/2;
+  aspect-ratio: 4/3;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 50px;
   padding: 15px;
   cursor: pointer;
 
+  &:hover {
+    translate: 0 -5px;
+    transition: all 0.4s;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+
+    .pokemon-image {
+      scale: calc(1.1);
+      transition: all 0.3s;
+    }
+  }
+
   .pokemon-id-box {
     ${flexStyles("row", "flex-start", "center")}
     width: 100%;
+
+    .pokemon-id {
+      font-weight: bold;
+      color: #666;
+    }
   }
 
   .pokemon-image {
     ${flexStyles()}
-    width: 40%;
-    height: 50%;
+    width: 32%;
+    height: 40%;
     text-align: center;
-    background-color: #ccc;
+  }
+  .pokemon-image:hover {
+  }
+
+  .pokemon-name {
+    font-weight: bold;
   }
 
   .pokemon-ability-box {
     ${flexStyles("row", "space-between", "center", "wrap", 5)}
     width: 100%;
     text-align: center;
+    margin: 5px 0;
   }
 
   .pokemon-ability-item {

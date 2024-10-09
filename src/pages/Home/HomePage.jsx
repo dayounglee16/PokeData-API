@@ -17,7 +17,7 @@ export default HomePage;
 
 const HomePageContainer = styled.div`
   width: 100%;
-  height: calc(100dvh - 68px);
+  height: 100%;
 
   .homePage-inner {
     width: 100%;

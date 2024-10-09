@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { flexStyles, mediaQueries } from "../../../styles/layoutStyles";
 
-const PokemonInfo = () => {
+const PokemonInfo = ({ selectedPokemon }) => {
+  console.log(selectedPokemon);
   return (
     <PokemonInfoContainer>
       <div className="pokemon-profile">
-        <span className="pokemon-id">No.4</span>
+        <span className="pokemon-id">{selectedPokemon}</span>
         <h2 className="pokemon-name">이상해씨</h2>
       </div>
       <div className="pokemon-ability-box">
