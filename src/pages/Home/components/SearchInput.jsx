@@ -12,8 +12,12 @@ const SearchInput = () => {
     setSearchInput(e.target.value);
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <input
         className="search-input"
         type="text"

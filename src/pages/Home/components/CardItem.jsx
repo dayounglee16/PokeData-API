@@ -85,7 +85,8 @@ const CardItemContainer = styled.div`
 
   .pokemon-ability-item {
     width: 44.5%;
-    background-color: #ccc;
+    background-color: #666;
+    color: #fff;
     padding: 5px 0;
     border-radius: 5px;
     font-size: 0.8rem;

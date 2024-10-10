@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import CardItem from "./CardItem";
 import { flexStyles } from "../../../styles/layoutStyles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import instance from "../../../instance";
-import { useRecoilState } from "recoil";
-import { PokemonDataState } from "../../../recoil/atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { PokemonDataState, SearchInputState } from "../../../recoil/atom";
 
 const CardList = () => {
   const [pokemonData, setPokemonData] = useRecoilState(PokemonDataState);
+  const searchInput = useRecoilValue(SearchInputState);
+  const [copyPokemonData, setCopyPokemonData] = useState(pokemonData);
 
-  // const [searchInput] = useRecoilValue(SearchInputState);
-  // const [filteredPokemon, setFilteredPokemon] = useState(pokemonData);
-
+  //포켓몬 데이터 요청 함수
   useEffect(() => {
     const getData = async () => {
       try {
@@ -48,7 +48,7 @@ const CardList = () => {
               (pokemonItem) => pokemonItem.language.name === "ko"
             );
 
-            //타입 한국어
+            //포켓몬 한국어 타입
             const typesKoreanName =
               typesResult.map(
                 (type) =>
@@ -66,8 +66,7 @@ const CardList = () => {
           })
         );
         setPokemonData(result);
-
-        // setFilteredPokemon(result);
+        setCopyPokemonData(result);
       } catch (err) {
         console.error(`error, ${err}`);
         alert("오류가 발생했습니다.");
@@ -77,21 +76,22 @@ const CardList = () => {
     getData();
   }, [setPokemonData]);
 
-  // useEffect(() => {
-  //   if (searchInput === "") return;
-
-  //   // const filtered = pokemonData.filter((pokemonItem) => {
-  //   //   return pokemonItem.id === Number(searchInput);
-  //   // });
-
-  //   // setFilteredPokemon(filtered);
-  //   console.log(searchInput);
-  // }, [searchInput, pokemonData]);
+  //포켓몬 검색 기능
+  useEffect(() => {
+    if (searchInput === "") {
+      setCopyPokemonData(pokemonData);
+      return;
+    }
+    const filteredPokemon = pokemonData.filter(
+      (pokemonItem) => pokemonItem.id === Number(searchInput)
+    );
+    setCopyPokemonData(filteredPokemon);
+  }, [pokemonData, searchInput]);
 
   return (
     <CardListContainer>
-      {Array.isArray(pokemonData) &&
-        pokemonData.map((pokemonItem) => {
+      {Array.isArray(copyPokemonData) &&
+        copyPokemonData?.map((pokemonItem) => {
           return (
             <CardItem
               key={pokemonItem.id}
