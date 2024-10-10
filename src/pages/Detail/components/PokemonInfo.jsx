@@ -2,10 +2,12 @@ import styled from "styled-components";
 import { flexStyles, mediaQueries } from "../../../styles/layoutStyles";
 import TypeItem from "./TypeItem";
 
-const PokemonInfo = ({ pokemonData, koreanName, typeskoreanName }) => {
-  // console.log("pokemonData", pokemonData);
-  // console.log("typeskoreanName", typeskoreanName);
-
+const PokemonInfo = ({
+  pokemonData,
+  koreanName,
+  typeskoreanName,
+  pokemonFlavorText,
+}) => {
   return (
     <PokemonInfoContainer>
       <div className="pokemon-profile">
@@ -18,14 +20,8 @@ const PokemonInfo = ({ pokemonData, koreanName, typeskoreanName }) => {
             return <TypeItem key={typeItem} typeItem={typeItem} />;
           })}
         </div>
-        {/* <ul className="pokemon-ability">
-          <li className="ability-title">{typeskoreanName[0]}</li>
-          <li className="ability-title">{typeskoreanName[1]}</li>
-        </ul> */}
-        <p className="pokemon-ability-text">
-          내리쪼이는 태양 빛을 에너지로 변환할 수 있기 때문에 여름에 더욱
-          강해진다.
-        </p>
+
+        <p className="pokemon-ability-text">{pokemonFlavorText}</p>
       </div>
       <div className="pokemon-size">
         <dl className="pokemon-weight-box">
@@ -67,14 +63,6 @@ const PokemonInfoContainer = styled.div`
     .pokemon-ability {
       ${flexStyles("row", "flex-start", "center", "wrap", 10)}
       width: 100%;
-
-      .ability-title {
-        ${flexStyles("row", "center", "center", "wrap", 10, 1)}
-        padding: 2% 0;
-        border-radius: 25px;
-        background-color: #333;
-        color: #fff;
-      }
     }
     .pokemon-ability-text {
       font-size: 1.1rem;

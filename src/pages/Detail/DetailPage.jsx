@@ -30,7 +30,6 @@ const DetailPage = () => {
         setPokemonData(mainRes.data);
         setSpeciesData(speciesRes.data);
         setTypesData(typeResult);
-        console.log("typeResult", typeResult);
       } catch (err) {
         console.error(`error ${err}`);
       }
@@ -43,16 +42,22 @@ const DetailPage = () => {
   const koreanName =
     speciesData?.names?.find(
       (pokemonName) => pokemonName.language.name === "ko"
-    )?.name || "이름을 불러오는 중 ...";
+    )?.name || "로딩중 ...";
 
   //포켓몬 타입 한국어 이름 추출
   const typeskoreanName =
     typesData.map(
       (type) =>
         type.names?.find((typeName) => typeName.language.name === "ko")?.name ||
-        "타입을 불러오는 중 ..."
+        "로딩중 ..."
     ) || [];
-  console.log("typeskoreanName", typeskoreanName);
+
+  //포켓몬 외형, 능력에 대한 한국어 설명 추출
+  const pokemonFlavorText =
+    speciesData?.["flavor_text_entries"]
+      ?.map((flavorItem) => flavorItem)
+      ?.find((flavorItem) => flavorItem.language.name === "ko")?.flavor_text ||
+    "로딩 중 ...";
 
   return (
     <DetailContainer>
@@ -68,6 +73,7 @@ const DetailPage = () => {
           pokemonData={pokemonData}
           koreanName={koreanName}
           typeskoreanName={typeskoreanName}
+          pokemonFlavorText={pokemonFlavorText}
         />
       </div>
     </DetailContainer>
@@ -100,8 +106,7 @@ const DetailContainer = styled.div`
       width: 48%;
 
       .pokemon-image {
-        width: 380px;
-        height: 100%;
+        width: 330px;
       }
     }
   }
