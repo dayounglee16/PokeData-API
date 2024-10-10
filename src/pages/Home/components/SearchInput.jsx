@@ -2,14 +2,24 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { flexStyles } from "../../../styles/layoutStyles";
+import { useRecoilState } from "recoil";
+import { SearchInputState } from "../../../recoil/atom";
 
 const SearchInput = () => {
+  const [searchInput, setSearchInput] = useRecoilState(SearchInputState);
+
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
   return (
     <Form>
       <input
         className="search-input"
         type="text"
+        value={searchInput}
         placeholder="포켓몬 아이디를 입력해주세요"
+        onChange={handleSearchInputChange}
       />
       <button className="search-button">
         <FontAwesomeIcon icon={faMagnifyingGlass} />

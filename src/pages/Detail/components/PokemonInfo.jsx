@@ -1,19 +1,27 @@
 import styled from "styled-components";
 import { flexStyles, mediaQueries } from "../../../styles/layoutStyles";
+import TypeItem from "./TypeItem";
 
-const PokemonInfo = ({ selectedPokemon }) => {
-  console.log(selectedPokemon);
+const PokemonInfo = ({ pokemonData, koreanName, typeskoreanName }) => {
+  // console.log("pokemonData", pokemonData);
+  // console.log("typeskoreanName", typeskoreanName);
+
   return (
     <PokemonInfoContainer>
       <div className="pokemon-profile">
-        <span className="pokemon-id">{selectedPokemon}</span>
-        <h2 className="pokemon-name">이상해씨</h2>
+        <span className="pokemon-id">No.{pokemonData.id}</span>
+        <h2 className="pokemon-name">{koreanName}</h2>
       </div>
       <div className="pokemon-ability-box">
-        <ul className="pokemon-ability">
-          <li className="ability-title">능력1</li>
-          <li className="ability-title">능력2</li>
-        </ul>
+        <div className="pokemon-ability">
+          {typeskoreanName.map((typeItem) => {
+            return <TypeItem key={typeItem} typeItem={typeItem} />;
+          })}
+        </div>
+        {/* <ul className="pokemon-ability">
+          <li className="ability-title">{typeskoreanName[0]}</li>
+          <li className="ability-title">{typeskoreanName[1]}</li>
+        </ul> */}
         <p className="pokemon-ability-text">
           내리쪼이는 태양 빛을 에너지로 변환할 수 있기 때문에 여름에 더욱
           강해진다.
@@ -22,11 +30,11 @@ const PokemonInfo = ({ selectedPokemon }) => {
       <div className="pokemon-size">
         <dl className="pokemon-weight-box">
           <dt className="pokemon-weight">신장</dt>
-          <dd className="pokemon-weight-value">0.7m</dd>
+          <dd className="pokemon-weight-value">{pokemonData.height / 10}m</dd>
         </dl>
         <dl className="pokemon-height-box">
           <dt className="pokemon-height">무게</dt>
-          <dd className="pokemon-height-value">0.7m</dd>
+          <dd className="pokemon-height-value">{pokemonData.weight / 10}kg</dd>
         </dl>
       </div>
     </PokemonInfoContainer>
@@ -57,14 +65,14 @@ const PokemonInfoContainer = styled.div`
     width: 100%;
 
     .pokemon-ability {
-      ${flexStyles("row", "space-between", "center", "wrap", 20)}
+      ${flexStyles("row", "flex-start", "center", "wrap", 10)}
       width: 100%;
 
       .ability-title {
         ${flexStyles("row", "center", "center", "wrap", 10, 1)}
         padding: 2% 0;
         border-radius: 25px;
-        background-color: #ccc;
+        background-color: #333;
         color: #fff;
       }
     }

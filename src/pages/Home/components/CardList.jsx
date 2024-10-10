@@ -8,6 +8,8 @@ import { PokemonDataState } from "../../../recoil/atom";
 
 const CardList = () => {
   const [pokemonData, setPokemonData] = useRecoilState(PokemonDataState);
+  // const [searchInput] = useRecoilValue(SearchInputState);
+  // const [filteredPokemon, setFilteredPokemon] = useState(pokemonData);
 
   useEffect(() => {
     const getData = async () => {
@@ -15,7 +17,7 @@ const CardList = () => {
         //포켓몬 전체 데이터 요청
         const mainRes = await instance.get("/pokemon", {
           params: {
-            limit: 500,
+            limit: 100,
           },
         });
 
@@ -34,16 +36,16 @@ const CardList = () => {
             const koreanName = speciesRes.data.names.find(
               (pokemonItem) => pokemonItem.language.name === "ko"
             );
-            console.log("speciesRes.data", speciesRes.data);
 
             return {
               id: detailRes.data.id,
               imgURL: pokemonImage,
-              name: koreanName.name, //임시
+              name: koreanName.name,
             };
           })
         );
         setPokemonData(result);
+        // setFilteredPokemon(result);
       } catch (err) {
         console.error(`error, ${err}`);
         alert("오류가 발생했습니다.");
@@ -53,11 +55,23 @@ const CardList = () => {
     getData();
   }, [setPokemonData]);
 
+  // useEffect(() => {
+  //   if (searchInput === "") return;
+
+  //   // const filtered = pokemonData.filter((pokemonItem) => {
+  //   //   return pokemonItem.id === Number(searchInput);
+  //   // });
+
+  //   // setFilteredPokemon(filtered);
+  //   console.log(searchInput);
+  // }, [searchInput, pokemonData]);
+
   return (
     <CardListContainer>
-      {pokemonData.map((pokemonItem) => {
-        return <CardItem key={pokemonItem.id} pokemonItem={pokemonItem} />;
-      })}
+      {Array.isArray(pokemonData) &&
+        pokemonData.map((pokemonItem) => {
+          return <CardItem key={pokemonItem.id} pokemonItem={pokemonItem} />;
+        })}
     </CardListContainer>
   );
 };
@@ -70,3 +84,5 @@ const CardListContainer = styled.div`
   margin-top: 80px;
   padding: 0 30px;
 `;
+
+//pokemonItem.id랑searchInput
