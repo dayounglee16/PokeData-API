@@ -5,7 +5,7 @@ import TypeItem from "./TypeItem";
 const PokemonInfo = ({
   pokemonData,
   koreanName,
-  typeskoreanName,
+  detailTypeskoreanName,
   pokemonFlavorText,
 }) => {
   return (
@@ -16,7 +16,7 @@ const PokemonInfo = ({
       </div>
       <div className="pokemon-ability-box">
         <div className="pokemon-ability">
-          {typeskoreanName.map((typeItem) => {
+          {detailTypeskoreanName.map((typeItem) => {
             return <TypeItem key={typeItem} typeItem={typeItem} />;
           })}
         </div>

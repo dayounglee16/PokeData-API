@@ -45,7 +45,7 @@ const DetailPage = () => {
     )?.name || "로딩중 ...";
 
   //포켓몬 타입 한국어 이름 추출
-  const typeskoreanName =
+  const detailTypeskoreanName =
     typesData.map(
       (type) =>
         type.names?.find((typeName) => typeName.language.name === "ko")?.name ||
@@ -72,7 +72,7 @@ const DetailPage = () => {
         <PokemonInfo
           pokemonData={pokemonData}
           koreanName={koreanName}
-          typeskoreanName={typeskoreanName}
+          detailTypeskoreanName={detailTypeskoreanName}
           pokemonFlavorText={pokemonFlavorText}
         />
       </div>

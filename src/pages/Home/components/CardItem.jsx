@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { flexStyles, mediaQueries } from "../../../styles/layoutStyles";
 import { useNavigate } from "react-router-dom";
-
-const CardItem = ({ pokemonItem }) => {
+const CardItem = ({ pokemonItem, pokemonTypes }) => {
   const navigate = useNavigate();
 
   return (
@@ -16,10 +15,15 @@ const CardItem = ({ pokemonItem }) => {
         alt={pokemonItem.name}
       />
       <h3 className="pokemon-name">{pokemonItem.name}</h3>
-      <ul className="pokemon-ability-box">
-        <li className="pokemon-ability-item">능력</li>
-        <li className="pokemon-ability-item">능력</li>
-      </ul>
+      <div className="pokemon-ability-box">
+        {pokemonTypes.map((typeItem) => {
+          return (
+            <div key={typeItem} className="pokemon-ability-item">
+              {typeItem}
+            </div>
+          );
+        })}
+      </div>
     </CardItemContainer>
   );
 };
